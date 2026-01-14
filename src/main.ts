@@ -4,7 +4,8 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
-// import * as hbs from 'hbs';
+
+import hbs from 'hbs';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
@@ -15,7 +16,7 @@ async function bootstrap() {
   // 配置模版引擎
   app.setViewEngine('hbs');
   // 注册 HBS 部分视图（确保这部分正确）
-  // hbs.registerPartials(join(__dirname, '../views/partials'));
+  hbs.registerPartials(join(__dirname, '../views/partials'));
 
   // 设置布局（layouts）目录，HBS默认会在`views/layouts`目录下查找布局文件
   // 设置默认布局为`main.hbs`，注意：这里需要指定相对于视图目录的路径
