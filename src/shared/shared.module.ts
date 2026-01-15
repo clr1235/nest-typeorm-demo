@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ConfigurationService } from './services/configuration.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
+import { UserService } from './services/user.service';
 
 @Global()
 @Module({
@@ -20,7 +21,7 @@ import { User } from './entities/user.entity';
     }),
     TypeOrmModule.forFeature([User]),
   ],
-  providers: [ConfigurationService],
-  exports: [ConfigurationService],
+  providers: [ConfigurationService, UserService],
+  exports: [ConfigurationService, UserService],
 })
 export class SharedModule {}
