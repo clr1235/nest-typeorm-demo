@@ -1,8 +1,10 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ConfigurationService } from './services/configuration.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './entities/user.entity';
 
+@Global()
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -16,6 +18,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       }),
       inject: [ConfigurationService],
     }),
+    TypeOrmModule.forFeature([User]),
   ],
   providers: [ConfigurationService],
   exports: [ConfigurationService],
