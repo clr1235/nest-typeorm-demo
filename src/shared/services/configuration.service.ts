@@ -19,4 +19,13 @@ export class ConfigurationService {
   get databaseName(): string {
     return this.configService.get<string>('DATABASE_NAME') as string;
   }
+  get mysqlConfig() {
+    return {
+      host: this.databaseHost,
+      port: this.databasePort,
+      username: this.databaseUser,
+      password: this.databasePassword,
+      database: this.databaseName,
+    };
+  }
 }

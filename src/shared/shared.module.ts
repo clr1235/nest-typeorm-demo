@@ -1,9 +1,22 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { ConfigurationService } from './services/configuration.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [ConfigModule.forRoot()],
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    TypeOrmModule.forRootAsync({
+      useFactory: (configService: ConfigurationService) => ({
+        type: 'mysql',
+        ...configService.mysqlConfig,
+        synchronize: true, // 保持代码和数据库的同步
+        autoLoadEntities: true, // 自动加载实体类
+        logging: true, // 输出内部生成的sql语句
+      }),
+      inject: [ConfigurationService],
+    }),
+  ],
   providers: [ConfigurationService],
   exports: [ConfigurationService],
 })
