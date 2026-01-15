@@ -79,3 +79,9 @@
   }
   bootstrap();
   ```
+- 连接数据库
+  ```bash
+  npm install --save @nestjs/config @nestjs/typeorm typeorm mysql2
+  ```
+  - 创建.env文件，添加数据库连接配置
+  - 创建src/shared/services/configuration.service.ts文件
