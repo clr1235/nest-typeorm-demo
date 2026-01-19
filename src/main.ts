@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
-
+import { ValidationPipe } from '@nestjs/common';
 import hbs from 'hbs';
 
 async function bootstrap() {
@@ -33,6 +33,8 @@ async function bootstrap() {
       },
     }),
   );
+  // 全局使用验证管道
+  app.useGlobalPipes(new ValidationPipe({ transform: true }));
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();

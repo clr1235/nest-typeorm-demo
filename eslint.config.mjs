@@ -34,6 +34,7 @@ export default tseslint.config(
       '@typescript-eslint/no-unsafe-member-access': 'off',
       '@typescript-eslint/require-await': 'off',
       '@typescript-eslint/await-thenable': 'off',
+      '@typescript-eslint/no-unsafe-argument': 'off',
     },
   },
 );
