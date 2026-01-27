@@ -42,6 +42,13 @@ async function bootstrap() {
     .setDescription('CMS API description')
     .setVersion('1.0')
     .addTag('cms')
+    .addCookieAuth('connect.sid') // 添加cookie认证到Swagger文档,cookie的名称为connect.sid
+    .addBearerAuth({
+      // 添加Bearer认证到Swagger文档，在请求头中添加Authorization字段，值为 Bearer <token>
+      type: 'http',
+      scheme: 'bearer',
+      // bearerFormat: 'JWT',
+    })
     .build();
   // 创建 Swagger 文档
   const document = SwaggerModule.createDocument(app, documentConf);
