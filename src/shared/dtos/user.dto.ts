@@ -48,6 +48,7 @@ export class CreateUserDto {
 
   @IsBoolean()
   @Type(() => Boolean)
+  // @IsOptional()
   @ApiProperty({ description: '是否为超级用户', example: false })
   is_super: boolean;
 

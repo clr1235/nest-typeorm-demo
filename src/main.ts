@@ -8,14 +8,14 @@ import { ValidationPipe } from '@nestjs/common';
 import hbs from 'hbs';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ExtendedConsoleLogger } from './extended-console-logger';
-import { MyLogger } from './my-logger';
+// import { MyLogger } from './my-logger';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     // logger: new ExtendedConsoleLogger(),
     bufferLogs: true,
   });
-  app.useLogger(app.get(MyLogger));
+  // app.useLogger(app.get(MyLogger));
 
   // 配置静态资源目录
   app.useStaticAssets(join(__dirname, '..', 'public'));
