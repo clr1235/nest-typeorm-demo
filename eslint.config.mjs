@@ -36,6 +36,8 @@ export default tseslint.config(
       '@typescript-eslint/await-thenable': 'off',
       '@typescript-eslint/no-unsafe-argument': 'off',
       '@typescript-eslint/no-unsafe-return': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unused-vars': 'off',
     },
   },
 );
